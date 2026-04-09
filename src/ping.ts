@@ -10,6 +10,7 @@ export interface ServerStatus {
   online: boolean
   motd?: string
   players?: { online: number; max: number }
+  playerList?: string[]
   version?: string
   latency?: number
   error?: string
@@ -67,6 +68,7 @@ export async function pingLine(type: 'je' | 'be', host: string, port: number, ti
         online: true,
         motd: res.motd.clean,
         players: res.players,
+        playerList: res.players.sample?.map(p => p.name) ?? [],
         version: res.version.name,
         latency: res.roundTripLatency
       }

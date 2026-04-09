@@ -34,25 +34,25 @@ npm install koishi-plugin-mc-multiping
 
 | 指令 | 说明 | 权限 |
 |---|---|---|
-| `/mcm [name]` | 查询所有或指定服务器状态 | 全员 |
-| `/mcm.list` | 列出所有已配置的服务器 | 全员 |
-| `/mcm.info <name>` | 查看服务器详细信息 | 全员 |
-| `/mcm.add <name> <je\|be>` | 添加服务器 | ≥ 3 |
-| `/mcm.remove <name>` | 删除服务器及其所有线路 | ≥ 3 |
-| `/mcm.edit <name> <prop> <value>` | 修改服务器属性 (`name` / `type`) | ≥ 3 |
-| `/lines <server>` | 列出服务器的所有线路 | 全员 |
-| `/lines.add <server> <address> [note]` | 为服务器添加线路 | ≥ 3 |
-| `/lines.rm <server> <note>` | 删除指定备注的线路 | ≥ 3 |
-| `/lines.edit <server> <note> <prop> <value>` | 修改线路属性 (`address` / `note`) | ≥ 3 |
+| `mcm [name]` | 查询所有或指定服务器状态 | 全员 |
+| `mcm.list` | 列出所有已配置的服务器 | 全员 |
+| `mcm.info <name>` | 查看服务器详细信息 | 全员 |
+| `mcm.add <name> <je\|be>` | 添加服务器 | ≥ 3 |
+| `mcm.remove <name>` | 删除服务器及其所有线路 | ≥ 3 |
+| `mcm.edit <name> <prop> <value>` | 修改服务器属性 (`name` / `type`) | ≥ 3 |
+| `lines <server>` | 列出服务器的所有线路 | 全员 |
+| `lines.add <server> <address> [note]` | 为服务器添加线路 | ≥ 3 |
+| `lines.rm <server> <note>` | 删除指定备注的线路 | ≥ 3 |
+| `lines.edit <server> <note> <prop> <value>` | 修改线路属性 (`address` / `note`) | ≥ 3 |
 
 ### 快速上手
 
 ```
-/mcm.add MyServer je                          # 添加一个 JE 服务器
-/lines.add MyServer play.dx.com 电信         # 添加电信线路
-/lines.add MyServer play.lt.com 联通         # 添加联通线路
-/mcm MyServer                                # 查询该服务器所有线路状态
-/mcm                                         # 查询所有服务器
+mcm.add MyServer je                          # 添加一个 JE 服务器
+lines.add MyServer play.dx.com 电信         # 添加电信线路
+lines.add MyServer play.lt.com 联通         # 添加联通线路
+mcm MyServer                                # 查询该服务器所有线路状态
+mcm                                         # 查询所有服务器
 ```
 
 ---

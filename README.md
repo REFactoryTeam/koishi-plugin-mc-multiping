@@ -34,25 +34,25 @@ npm install koishi-plugin-mc-multiping
 
 | Command | Description | Authority |
 |---|---|---|
-| `/mcm [name]` | Query all or a specific server | All |
-| `/mcm.list` | List all configured servers | All |
-| `/mcm.info <name>` | View server details | All |
-| `/mcm.add <name> <je\|be>` | Add a server | ≥ 3 |
-| `/mcm.remove <name>` | Remove a server and all its lines | ≥ 3 |
-| `/mcm.edit <name> <prop> <value>` | Edit server property (`name` / `type`) | ≥ 3 |
-| `/lines <server>` | List all lines of a server | All |
-| `/lines.add <server> <address> [note]` | Add a line to a server | ≥ 3 |
-| `/lines.rm <server> <note>` | Remove a line by note | ≥ 3 |
-| `/lines.edit <server> <note> <prop> <value>` | Edit line property (`address` / `note`) | ≥ 3 |
+| `mcm [name]` | Query all or a specific server | All |
+| `mcm.list` | List all configured servers | All |
+| `mcm.info <name>` | View server details | All |
+| `mcm.add <name> <je\|be>` | Add a server | ≥ 3 |
+| `mcm.remove <name>` | Remove a server and all its lines | ≥ 3 |
+| `mcm.edit <name> <prop> <value>` | Edit server property (`name` / `type`) | ≥ 3 |
+| `lines <server>` | List all lines of a server | All |
+| `lines.add <server> <address> [note]` | Add a line to a server | ≥ 3 |
+| `lines.rm <server> <note>` | Remove a line by note | ≥ 3 |
+| `lines.edit <server> <note> <prop> <value>` | Edit line property (`address` / `note`) | ≥ 3 |
 
 ### Quick Start
 
 ```
-/mcm.add MyServer je                          # Add a JE server
-/lines.add MyServer play.us.com US-East       # Add a line
-/lines.add MyServer play.eu.com EU-West       # Add another line
-/mcm MyServer                                 # Query all lines for this server
-/mcm                                          # Query all servers
+mcm.add MyServer je                          # Add a JE server
+lines.add MyServer play.us.com US-East       # Add a line
+lines.add MyServer play.eu.com EU-West       # Add another line
+mcm MyServer                                 # Query all lines for this server
+mcm                                          # Query all servers
 ```
 
 ---

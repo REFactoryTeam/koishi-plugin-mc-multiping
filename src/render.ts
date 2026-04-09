@@ -2,6 +2,7 @@ import { Context } from 'koishi'
 import {} from 'koishi-plugin-puppeteer'
 import { ServerStatus } from './ping'
 import { McServer } from './database'
+import { Config } from './index'
 
 export type TextFn = (path: string, params?: any) => string
 
@@ -12,7 +13,7 @@ export interface ServerResult {
 
 // ==================== single server rendering ====================
 
-export function renderToText(t: TextFn, server: McServer, statuses: ServerStatus[], authority: number = 0): string {
+export function renderToText(t: TextFn, server: McServer, statuses: ServerStatus[], authority: number = 0, config?: Config): string {
   let text = `[${server.type.toUpperCase()}] ${server.name}\n`
 
   if (!statuses.length) {
@@ -43,21 +44,29 @@ export function renderToText(t: TextFn, server: McServer, statuses: ServerStatus
     }
   })
 
+  if (onlineLine && config?.showPlayerList && onlineLine.playerList?.length) {
+    const playerList = onlineLine.playerList
+    const playerListStr = playerList.length > 3
+      ? '\n    ' + playerList.join('\n    ')
+      : playerList.join(', ')
+    text += `  ${t('mc-multiping.player-list', { list: playerListStr })}\n`
+  }
+
   return text.trimEnd()
 }
 
-export async function renderToImage(ctx: Context, t: TextFn, server: McServer, statuses: ServerStatus[], authority: number = 0): Promise<string | undefined> {
-  return renderAllToImage(ctx, t, [{ server, statuses }], authority)
+export async function renderToImage(ctx: Context, t: TextFn, server: McServer, statuses: ServerStatus[], authority: number = 0, config?: Config): Promise<string | undefined> {
+  return renderAllToImage(ctx, t, [{ server, statuses }], authority, config)
 }
 
 // ==================== multi-server rendering ====================
 
-export function renderAllToText(t: TextFn, results: ServerResult[], authority: number = 0): string {
+export function renderAllToText(t: TextFn, results: ServerResult[], authority: number = 0, config?: Config): string {
   if (!results.length) return t('mc-multiping.no-servers')
-  return results.map(r => renderToText(t, r.server, r.statuses, authority)).join('\n\n')
+  return results.map(r => renderToText(t, r.server, r.statuses, authority, config)).join('\n\n')
 }
 
-export async function renderAllToImage(ctx: Context, t: TextFn, results: ServerResult[], authority: number = 0): Promise<string | undefined> {
+export async function renderAllToImage(ctx: Context, t: TextFn, results: ServerResult[], authority: number = 0, config?: Config): Promise<string | undefined> {
   const puppeteer = ctx.puppeteer
   if (!puppeteer) return undefined
 
@@ -111,6 +120,21 @@ export async function renderAllToImage(ctx: Context, t: TextFn, results: ServerR
 
     htmlBody += `
         </div>
+    `
+
+    if (onlineLine && config?.showPlayerList && onlineLine.playerList?.length) {
+      const playerList = onlineLine.playerList.map(n => escapeHtml(n))
+      const playerListHtml = playerList.length > 3
+        ? playerList.map(player => `<div>${player}</div>`).join('')
+        : playerList.join(', ')
+      htmlBody += `
+        <div style="color:#a6adc8; margin-top:8px; font-size:0.8em;">
+          ${t('mc-multiping.player-list', { list: playerListHtml })}
+        </div>
+      `
+    }
+
+    htmlBody += `
       </div>
     `
   }

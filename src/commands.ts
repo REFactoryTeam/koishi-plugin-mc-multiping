@@ -32,11 +32,11 @@ export function registerCommands(ctx: Context, config: Config) {
         results.sort((a, b) => a.server.name.localeCompare(b.server.name))
 
         if (config.outputMode === 'image') {
-          const image = await renderAllToImage(ctx, $, results, authority)
+          const image = await renderAllToImage(ctx, $, results, authority, config)
           if (image) return image
-          return $('mc-multiping.image-fallback') + renderAllToText($, results, authority)
+          return $('mc-multiping.image-fallback') + renderAllToText($, results, authority, config)
         }
-        return renderAllToText($, results, authority)
+        return renderAllToText($, results, authority, config)
       }
 
       const servers = await ctx.database.get('mc_servers', { name })
@@ -50,11 +50,11 @@ export function registerCommands(ctx: Context, config: Config) {
       const statuses = await queryServerLines(server, lines, config.timeout)
 
       if (config.outputMode === 'image') {
-        const image = await renderToImage(ctx, $, server, statuses, authority)
+        const image = await renderToImage(ctx, $, server, statuses, authority, config)
         if (image) return image
-        return $('mc-multiping.image-fallback') + renderToText($, server, statuses, authority)
+        return $('mc-multiping.image-fallback') + renderToText($, server, statuses, authority, config)
       }
-      return renderToText($, server, statuses, authority)
+      return renderToText($, server, statuses, authority, config)
     })
 
   // mcm.list — list all servers
