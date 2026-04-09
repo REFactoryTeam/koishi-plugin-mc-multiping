@@ -37,7 +37,7 @@ npm install koishi-plugin-mc-multiping
 | `/mcm [name]` | Query all or a specific server | All |
 | `/mcm.list` | List all configured servers | All |
 | `/mcm.info <name>` | View server details | All |
-| `/mcm.add <name> <je|be>` | Add a server | ≥ 3 |
+| `/mcm.add <name> <je\|be>` | Add a server | ≥ 3 |
 | `/mcm.remove <name>` | Remove a server and all its lines | ≥ 3 |
 | `/mcm.edit <name> <prop> <value>` | Edit server property (`name` / `type`) | ≥ 3 |
 | `/lines <server>` | List all lines of a server | All |

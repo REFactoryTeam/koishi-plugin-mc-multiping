@@ -37,7 +37,7 @@ npm install koishi-plugin-mc-multiping
 | `/mcm [name]` | 查询所有或指定服务器状态 | 全员 |
 | `/mcm.list` | 列出所有已配置的服务器 | 全员 |
 | `/mcm.info <name>` | 查看服务器详细信息 | 全员 |
-| `/mcm.add <name> <je|be>` | 添加服务器 | ≥ 3 |
+| `/mcm.add <name> <je\|be>` | 添加服务器 | ≥ 3 |
 | `/mcm.remove <name>` | 删除服务器及其所有线路 | ≥ 3 |
 | `/mcm.edit <name> <prop> <value>` | 修改服务器属性 (`name` / `type`) | ≥ 3 |
 | `/lines <server>` | 列出服务器的所有线路 | 全员 |
