@@ -1,0 +1,58 @@
+{
+  "name": "koishi-plugin-mc-multiping",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "locales"
+  ],
+  "description": "Minecraft server multi-line status query plugin for Koishi",
+  "license": "MIT",
+  "homepage": "https://github.com/REFactoryTeam/koishi-plugin-mc-multiping#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/REFactoryTeam/koishi-plugin-mc-multiping.git"
+  },
+  "keywords": [
+    "koishi",
+    "plugin",
+    "minecraft",
+    "mc",
+    "ping",
+    "motd",
+    "multiping"
+  ],
+  "author": "",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc -w",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "minecraft-server-util": "^5.4.4"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.2",
+    "typescript": "^6.0.2"
+  },
+  "peerDependencies": {
+    "koishi": "^4.16.0",
+    "koishi-plugin-puppeteer": "^3.9.0"
+  },
+  "peerDependenciesMeta": {
+    "koishi-plugin-puppeteer": {
+      "optional": true
+    }
+  },
+  "koishi": {
+    "description": {
+      "zh": "Minecraft 多线路服务器状态查询",
+      "en": "Multi-line Minecraft server status query"
+    },
+    "service": {
+      "required": ["database"],
+      "optional": ["puppeteer"]
+    }
+  }
+}

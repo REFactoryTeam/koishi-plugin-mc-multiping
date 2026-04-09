@@ -1,0 +1,72 @@
+commands:
+  mcm:
+    description: Query MC server status
+    usage: No args to query all servers, or specify a server name
+    list:
+      description: List all configured servers
+    info:
+      description: View server details
+    add:
+      description: "Add a server (type: je or be)"
+    remove:
+      description: Remove a server and all its lines
+    edit:
+      description: "Edit server properties (name/type)"
+  lines:
+    description: List all lines of a server
+    add:
+      description: Add a line to a server
+    rm:
+      description: Remove a line by note
+    edit:
+      description: "Edit line properties (address/note)"
+
+mc-multiping:
+  provide-server-name: Please provide a server name.
+  server-not-found: 'Server "{name}" not found.'
+  no-servers-hint: "No servers configured. Use mcm.add <name> <je|be> to add one."
+  querying-all: "Querying {count} servers..."
+  querying: Querying...
+  no-lines: 'Server "{name}" has no lines configured.'
+  image-fallback: "Image render failed, text fallback:\n\n"
+  no-servers: No servers configured.
+  server-list-header: "Server List:"
+  server-list-item: "{idx}. {name} [{type}] — {count} lines"
+  info-header: 'Server "{name}" Details:'
+  info-type: "Type: {type}"
+  info-line-count: "Lines: {count}"
+  info-lines-header: "Line List:"
+  info-line-item: "  {idx}. [{note}] {host}:{port}"
+  add-usage: "Usage: mcm.add <name> <je|be>"
+  add-type-invalid: Type must be je or be.
+  add-success: 'Server "{name}" ({type}) added.'
+  add-failed: Failed to add. Name may already exist.
+  remove-success: 'Server "{name}" and all its lines deleted.'
+  edit-usage: "Usage: mcm.edit <server> <property> <value>\nProperties: name, type"
+  edit-name-success: 'Server "{old}" renamed to "{new}".'
+  edit-name-failed: Rename failed. New name may already exist.
+  edit-type-success: 'Server "{name}" type changed to {type}.'
+  edit-unknown-prop: "Unknown property. Available: name, type"
+  addline-usage: "Usage: lines.add <server> <address> [note]\nExample: play.mc.com / 1.2.3.4:25565"
+  addline-success: "Line [{note}] → {host}:{port} added."
+  rmline-usage: "Usage: lines.rm <server> <note>"
+  line-not-found: 'Line "{note}" not found on server "{server}".'
+  rmline-success: 'Line "{note}" of server "{server}" deleted.'
+  lines-header: 'Lines for server "{name}":'
+  lines-item: "{idx}. [{note}] {host}:{port}"
+  lines-empty: 'Server "{name}" has no lines.'
+  editline-usage: "Usage: lines.edit <server> <note> <property> <value>\nProperties: address, note"
+  editline-address-success: 'Line "{note}" address changed to {host}:{port}.'
+  editline-note-success: 'Line "{old}" note changed to "{new}".'
+  editline-unknown-prop: "Unknown property. Available: address, note"
+  online: Online
+  offline: Offline
+  players: Players
+  latency: Latency
+  motd-label: MOTD
+  version-label: Version
+  lines-online: "{online}/{total} lines online"
+  no-lines-short: No lines
+  default-line-note: Default
+  status-error-detail: "Connection failed: {error}"
+  status-error-simple: Connection failed
